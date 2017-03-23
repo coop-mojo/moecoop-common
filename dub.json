@@ -1,12 +1,12 @@
 {
-    "name": "moecoop-common",
+    "name": "common",
     "description": "生協の知恵袋-common",
     "homepage": "https://github.com/coop-mojo/moecoop-common/",
     "copyright": "© 2016, もじょんぬ",
     "license": "MIT",
     "authors": ["もじょんぬ <moe.e.coop@gmail.com>"],
 
-    "targetType": "none",
+    "targetType": "sourceLibrary",
 
     "dependencies": {
         "vibe-d:web": ">=0.8.0-beta.3",
