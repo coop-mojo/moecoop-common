@@ -397,7 +397,7 @@ struct FoodBufferInfo
 {
     import coop.core;
 
-    this(string eff, WisdomModel wm) @safe pure
+    this(string eff, WisdomModel wm)
     {
         バフ名 = eff;
         if (auto einfo = wm.getFoodEffect(eff))
