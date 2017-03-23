@@ -239,7 +239,7 @@ struct RecipeInfo
     import coop.core;
     import coop.core.recipe;
 
-    this(Recipe r, WisdomModel wm) pure nothrow
+    this(Recipe r, WisdomModel wm)
     {
         import std.algorithm;
         import std.range;
@@ -380,7 +380,7 @@ struct FoodInfo
     import coop.core;
     import coop.core.item: FInfo = FoodInfo, AdditionalEffect;
 
-    this(FInfo info, WisdomModel wm) @safe pure
+    this(FInfo info, WisdomModel wm)
     {
         効果 = info.effect;
         if (auto eff = info.additionalEffect)
