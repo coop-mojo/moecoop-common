@@ -18,7 +18,7 @@ interface ModelAPI
     @path("/binders/:binder/recipes") @queryParam("query", "query")
     @queryParam("migemo", "migemo") @queryParam("rev", "rev") @queryParam("key", "sort") @queryParam("fields", "fields")
     GetRecipesResult getBinderRecipes(string _binder, string query="",
-                                      bool migemo=false, bool rev=false, string key = "defalut", string fields = "");
+                                      bool migemo=false, bool rev=false, string key = "default", string fields = "");
 
     @path("/skills") @property GetSkillCategoriesResult getSkillCategories();
     @path("/skills/:skill/recipes") @queryParam("query", "query")
