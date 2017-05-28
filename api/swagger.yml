@@ -1045,9 +1045,9 @@ definitions:
       角度補正角:
         type: integer
         description: 角度補正角を表します。
-      装備可能シップ:
+      使用可能シップ:
         type: array
-        description: 装備可能なシップを表します。
+        description: 使用可能なシップを表します。
         items:
           $ref: '#/definitions/シップ情報'
       必要スキル:
