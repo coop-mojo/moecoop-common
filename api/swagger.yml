@@ -1,11 +1,13 @@
 swagger: '2.0'
 info:
   title: 生協の知恵袋 API
-  description: 生協の知恵袋が提供しているデータや機能にアクセスするための API です。ベース URL は https://moecoop-api.arukascloud.io/ です。
+  description: >-
+    生協の知恵袋が提供しているデータや機能にアクセスするための API です。ベース URL は
+    https://moecoop-api.arukascloud.io/ です。
   license:
     name: MIT License
-    url: https://github.com/coop-mojo/moecoop/blob/master/LICENSE
-  version: "1.0.0"
+    url: 'https://github.com/coop-mojo/moecoop/blob/master/LICENSE'
+  version: 1.0.0
 host: moecoop-api.arukascloud.io
 schemes:
   - https
@@ -18,10 +20,10 @@ paths:
     get:
       summary: サーバーバージョン情報
       description: 生協の知恵袋 API サーバーのバージョンを返します。デバッグ用です。
-      tags: 
+      tags:
         - その他
       responses:
-        200:
+        '200':
           description: バージョン情報
           schema:
             type: object
@@ -32,10 +34,10 @@ paths:
     get:
       summary: FS 生協からのお知らせなど
       description: 生協の知恵袋の新バージョンのお知らせや、生協からの広告を返します。
-      tags: 
+      tags:
         - その他
       responses:
-        200:
+        '200':
           description: 生協からのお知らせ
           schema:
             type: object
@@ -57,7 +59,7 @@ paths:
       tags:
         - レシピ
       responses:
-        200:
+        '200':
           description: バインダー一覧
           schema:
             type: object
@@ -65,9 +67,8 @@ paths:
               バインダー情報:
                 type: array
                 items:
-                 $ref: '#/definitions/バインダー情報'
-
-  /binders/{binder}/recipes:
+                  $ref: '#/definitions/バインダー情報'
+  '/binders/{binder}/recipes':
     get:
       summary: バインダー収録レシピ一覧
       description: |
@@ -97,7 +98,9 @@ paths:
           type: boolean
         - name: sort
           in: query
-          description: name を指定するとレシピ名でソートされた結果が、skill でソートすると生産に必要なスキル値でソートされた結果が返ります。 default ではバインダーの登録順で結果が返ります。デフォルトは default です。
+          description: >-
+            name を指定するとレシピ名でソートされた結果が、skill でソートすると生産に必要なスキル値でソートされた結果が返ります。
+            default ではバインダーの登録順で結果が返ります。デフォルトは default です。
           required: false
           type: string
           enum:
@@ -106,12 +109,12 @@ paths:
             - default
         - name: fields
           in: query
-          description: 取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。
+          description: '取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。'
           required: false
           type: string
           collectionFormat: csv
       responses:
-        200:
+        '200':
           description: バインダーに収録されているレシピ情報の配列
           schema:
             type: object
@@ -120,16 +123,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/レシピ情報'
-        404:
-          description:
-            指定したバインダーが存在しないか、fields パラメータで指定したフィールドが存在しない
+        '404':
+          description: 指定したバインダーが存在しないか、fields パラメータで指定したフィールドが存在しない
           schema:
             type: object
             properties:
               statusMessage:
                 type: string
                 description: No such binder か No such field
-
   /skills:
     get:
       summary: スキルカテゴリ一覧
@@ -138,7 +139,7 @@ paths:
       tags:
         - レシピ
       responses:
-        200:
+        '200':
           description: スキルカテゴリ一覧
           schema:
             type: object
@@ -146,9 +147,8 @@ paths:
               スキル情報:
                 type: array
                 items:
-                 $ref: '#/definitions/スキルカテゴリ情報'
-
-  /skills/{skill}/recipes:
+                  $ref: '#/definitions/スキルカテゴリ情報'
+  '/skills/{skill}/recipes':
     get:
       summary: スキルカテゴリ内レシピ一覧
       description: |
@@ -178,7 +178,10 @@ paths:
           type: boolean
         - name: sort
           in: query
-          description: name を指定するとレシピ名でソートされた結果が、skill でソートすると生産に必要なスキル値でソートされた結果が返ります。デフォルトを指定した場合の結果の順序は定義されていません。デフォルトは default です。
+          description: >-
+            name を指定するとレシピ名でソートされた結果が、skill
+            でソートすると生産に必要なスキル値でソートされた結果が返ります。デフォルトを指定した場合の結果の順序は定義されていません。デフォルトは
+            default です。
           required: false
           type: string
           enum:
@@ -187,12 +190,12 @@ paths:
             - default
         - name: fields
           in: query
-          description: 取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。
+          description: '取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。'
           required: false
           type: string
           collectionFormat: csv
       responses:
-        200:
+        '200':
           description: スキルカテゴリに分類されているレシピ情報の配列
           schema:
             type: object
@@ -201,16 +204,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/レシピ情報'
-        404:
-          description:
-            指定したスキルカテゴリが存在しないか、fields パラメータで指定したフィールドが存在しない
+        '404':
+          description: 指定したスキルカテゴリが存在しないか、fields パラメータで指定したフィールドが存在しない
           schema:
             type: object
             properties:
               statusMessage:
                 type: string
                 description: No such skill category か No such field
-
   /recipes:
     get:
       summary: レシピ一覧
@@ -235,7 +236,9 @@ paths:
           type: boolean
         - name: sort
           in: query
-          description: name を指定するとレシピ名でソートされた結果が、skill でソートすると生産に必要なスキル値でソートされた結果が返ります。 default を指定した場合の順序は定義されていません。デフォルトは default です。
+          description: >-
+            name を指定するとレシピ名でソートされた結果が、skill でソートすると生産に必要なスキル値でソートされた結果が返ります。
+            default を指定した場合の順序は定義されていません。デフォルトは default です。
           required: false
           type: string
           enum:
@@ -244,12 +247,12 @@ paths:
             - default
         - name: fields
           in: query
-          description: 取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。
+          description: '取得したいレシピ詳細情報のフィールド名を","でつなげた文字列です。ここで与えたフィールドの値が、返り値の追加情報欄に入ります。'
           required: false
           type: string
           collectionFormat: csv
       responses:
-        200:
+        '200':
           description: レシピ情報の配列
           schema:
             type: object
@@ -258,7 +261,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/レシピ情報'
-        404:
+        '404':
           description: fields パラメータで指定したフィールドが存在しない
           schema:
             type: object
@@ -266,8 +269,7 @@ paths:
               statusMessage:
                 type: string
                 description: No such field
-
-  /recipes/{recipe}:
+  '/recipes/{recipe}':
     get:
       summary: レシピ詳細
       description: レシピの詳細情報を返します。
@@ -280,20 +282,18 @@ paths:
           required: true
           type: string
       responses:
-        200:
+        '200':
           description: レシピの詳細情報
           schema:
             $ref: '#/definitions/レシピ詳細情報'
-        404:
-          description:
-            指定したレシピがない
+        '404':
+          description: 指定したレシピがない
           schema:
             type: object
             properties:
               statusMessage:
                 type: string
                 description: No such recipe
-
   /items:
     get:
       summary: アイテム一覧
@@ -316,8 +316,16 @@ paths:
           description: true を指定すると、生産スキルで作成できるアイテムのみを検索します。デフォルトは false です。
           required: false
           type: boolean
+        - name: from-ingredients
+          in: query
+          description: >-
+            only-product が true のときに true を指定すると、query
+            が生産レシピの材料にマッチする生産アイテムを検索します。 デフォルトは false です。only-product が false
+            の時に true を指定すると 400 が返ります。
+          required: false
+          type: boolean
       responses:
-        200:
+        '200':
           description: アイテム情報の配列
           schema:
             type: object
@@ -326,8 +334,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/アイテム情報'
-
-  /items/{item}:
+        '400':
+          description: サポートされていないパラメータの組み合わせ
+          schema:
+            type: object
+            properties:
+              statusMessage:
+                type: string
+                description: from-ingredients is valid only if only-products is true
+  '/items/{item}':
     get:
       summary: アイテム詳細情報
       description: アイテムの詳細情報を表示します。参考価格はデフォルトの値が使用されます。
@@ -340,13 +355,12 @@ paths:
           required: true
           type: string
       responses:
-        200:
+        '200':
           description: アイテムの詳細情報
           schema:
             $ref: '#/definitions/アイテム詳細情報'
-        404:
-          description:
-            指定したレシピがない
+        '404':
+          description: 指定したレシピがない
           schema:
             type: object
             properties:
@@ -355,8 +369,7 @@ paths:
                 description: No such item
     post:
       summary: 調達価格を反映させたアイテム詳細情報
-      description:
-        アイテムの詳細情報を表示します。参考価格の計算にはパラメーターで与えられた調達価格が使用されます。
+      description: アイテムの詳細情報を表示します。参考価格の計算にはパラメーターで与えられた調達価格が使用されます。
       tags:
         - アイテム
       parameters:
@@ -376,20 +389,18 @@ paths:
                 type: object
                 description: アイテムの調達価格です。キーはアイテム名、値はそのアイテムの調達価格です。
       responses:
-        200:
+        '200':
           description: アイテムの詳細情報
           schema:
             $ref: '#/definitions/アイテム詳細情報'
-        404:
-          description:
-            指定したレシピがない
+        '404':
+          description: 指定したレシピがない
           schema:
             type: object
             properties:
               statusMessage:
                 type: string
                 description: No such item
-
   /menu-recipes/options:
     get:
       summary: レシピ候補一覧
@@ -399,7 +410,7 @@ paths:
         - レシピ
         - メニューレシピ
       responses:
-        200:
+        '200':
           description: 選択可能レシピ一覧
           schema:
             type: object
@@ -439,7 +450,7 @@ paths:
                   type: string
                   description: 作成したいアイテムです。
       responses:
-        200:
+        '200':
           description: 必要アイテムおよびレシピ一覧
           schema:
             type: object
@@ -451,10 +462,13 @@ paths:
                   $ref: '#/definitions/レシピ情報'
               必要素材:
                 type: array
-                description: 必要アイテム一覧です。各要素の追加情報から "中間素材" (boolean) が取得できます。"中間素材" は、該当素材が他の素材からの生産スキルで作成でき、body 部から渡される作成アイテムに含まれていない場合に true になります。
+                description: >-
+                  必要アイテム一覧です。各要素の追加情報から "中間素材" (boolean) が取得できます。"中間素材"
+                  は、該当素材が他の素材からの生産スキルで作成でき、body 部から渡される作成アイテムに含まれていない場合に true
+                  になります。
                 items:
                   $ref: '#/definitions/アイテム情報'
-        403:
+        '403':
           description: 引数に渡されたアイテムが存在しない
           schema:
             type: object
@@ -462,7 +476,6 @@ paths:
               statusMessage:
                 type: string
                 description: No such item
-
   /menu-recipes:
     post:
       summary: アイテム作成に必要な素材・レシピおよび作成時の余りを返す
@@ -484,18 +497,23 @@ paths:
                 description: 作成したいアイテムとその個数です。キーがアイテム名、値が作成個数を表します。
               所持アイテム:
                 type: object
-                description: 手元に持っているアイテムとその個数です。この値が {} でない場合、所持アイテムを考慮して素材やレシピを返します。キーがアイテム名、値が所持数を表します。
+                description: >-
+                  手元に持っているアイテムとその個数です。この値が {}
+                  でない場合、所持アイテムを考慮して素材やレシピを返します。キーがアイテム名、値が所持数を表します。
               使用レシピ:
                 type: object
-                description: 特定アイテムを作成するレシピが複数ある場合に、利用するレシピを指定します。特に指定しない場合、知恵袋のデフォルトが使用されます。キーはアイテム名、値はアイテムを作成できるレシピ名を表します。作成方法が複数あるアイテムと、選択可能なレシピ一覧については /menu-recipes/options を参照してください。
+                description: >-
+                  特定アイテムを作成するレシピが複数ある場合に、利用するレシピを指定します。特に指定しない場合、知恵袋のデフォルトが使用されます。キーはアイテム名、値はアイテムを作成できるレシピ名を表します。作成方法が複数あるアイテムと、選択可能なレシピ一覧については
+                  /menu-recipes/options を参照してください。
               直接調達アイテム:
                 type: array
-                description: 素材から用意せず、直接用意するアイテムを指定します。例えば直接調達アイテムに塩を指定した場合、「塩(岩塩)」レシピは使用しなくなります。
+                description: >-
+                  素材から用意せず、直接用意するアイテムを指定します。例えば直接調達アイテムに塩を指定した場合、「塩(岩塩)」レシピは使用しなくなります。
                 items:
                   type: string
                   description: 直接調達するアイテム名です。
       responses:
-        200:
+        '200':
           description: 必要アイテム、レシピ、余り物一覧
           schema:
             type: object
@@ -504,13 +522,14 @@ paths:
               必要レシピ:
                 type: array
                 description: 必要レシピとその適用回数です。
-                # TODO: ソート順についても追記する
                 items:
                   $ref: '#/definitions/レシピ回数情報'
               必要素材:
                 type: array
-                description: 必要アイテムとその個数です。各要素の追加情報から "中間素材" (boolean) が取得できます。"中間素材" は、該当素材が他の素材からの生産スキルで作成でき、body 部から渡される作成アイテムに含まれていない場合に true になります。
-                # TODO: ソート順についても追記する
+                description: >-
+                  必要アイテムとその個数です。各要素の追加情報から "中間素材" (boolean) が取得できます。"中間素材"
+                  は、該当素材が他の素材からの生産スキルで作成でき、body 部から渡される作成アイテムに含まれていない場合に true
+                  になります。
                 items:
                   $ref: '#/definitions/アイテム個数情報'
               余り物:
@@ -518,7 +537,7 @@ paths:
                 description: 作成イテムを作ったときに余る素材とその個数です。
                 items:
                   $ref: '#/definitions/アイテム個数情報'
-        403:
+        '403':
           description: 引数に渡されたアイテムかレシピが存在しない
           schema:
             type: object
@@ -526,7 +545,6 @@ paths:
               statusMessage:
                 type: string
                 description: No such item or no such recipe
-
 definitions:
   バインダー情報:
     type: object
@@ -612,8 +630,7 @@ definitions:
         description: スキルカテゴリ名です。
       レシピ一覧:
         type: string
-        description:
-          スキルカテゴリに分類されているレシピを表示するエンドポイントです。
+        description: スキルカテゴリに分類されているレシピを表示するエンドポイントです。
   アイテム個数情報:
     type: object
     properties:
@@ -769,7 +786,6 @@ definitions:
         $ref: '#/definitions/弾情報'
       盾情報:
         $ref: '#/definitions/盾情報'
-
   飲食物情報:
     type: object
     description: 飲食物の詳細情報です。アイテム種別が食べ物、飲み物、酒以外の場合や、知恵袋にデータが登録されていない場合には null になります。
@@ -1028,8 +1044,7 @@ definitions:
         description: 属性チャージが可能な場合には true になります。
   弾情報:
     type: object
-    description: 弾や矢の詳細情報です。アイテム種別が弾以外の場合や、
-      知恵袋にデータが登録されていない場合には null になります。
+    description: 弾や矢の詳細情報です。アイテム種別が弾以外の場合や、 知恵袋にデータが登録されていない場合には null になります。
     x-nullable: true
     properties:
       ダメージ:
@@ -1063,8 +1078,7 @@ definitions:
         description: 命中時に敵に与える付与効果です。
   盾情報:
     type: object
-    description: 盾の詳細情報です。アイテム種別が盾以外の場合や、
-      知恵袋にデータが登録されていない場合には null になります。
+    description: 盾の詳細情報です。アイテム種別が盾以外の場合や、 知恵袋にデータが登録されていない場合には null になります。
     x-nullable: true
     properties:
       アーマークラス:
