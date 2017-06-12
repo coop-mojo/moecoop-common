@@ -31,8 +31,8 @@ interface ModelAPI
     @path("/recipes") @queryParam("migemo", "migemo") @queryParam("rev", "rev") @queryParam("key", "sort") @queryParam("fields", "fields")
     GetRecipesResult getRecipes(string query="", bool migemo=false, bool rev=false, string key = "default", string fields = "");
 
-    @path("/items") @queryParam("migemo", "migemo") @queryParam("onlyProducts", "only-products")
-    GetItemsResult getItems(string query="", bool migemo=false, bool onlyProducts=false);
+    @path("/items") @queryParam("migemo", "migemo") @queryParam("onlyProducts", "only-products") @queryParam("rev", "rev")
+    GetItemsResult getItems(string query="", bool migemo=false, bool onlyProducts=false, bool rev=false);
 
     @path("/recipes/:recipe") RecipeInfo getRecipe(string _recipe);
 
@@ -218,6 +218,7 @@ struct ItemInfo
     bool 転送可;
     bool スタック可;
     PetFoodInfo ペットアイテム;
+    RecipeLink[] レシピ;
     string 備考;
     string アイテム種別 = "不明";
 
