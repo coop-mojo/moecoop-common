@@ -218,6 +218,7 @@ struct ItemInfo
     bool 転送可;
     bool スタック可;
     PetFoodInfo ペットアイテム;
+    BinderLink[] レシピ;
     string 備考;
     string アイテム種別 = "不明";
 
