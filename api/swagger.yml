@@ -3,14 +3,14 @@ info:
   title: 生協の知恵袋 API
   description: >-
     生協の知恵袋が提供しているデータや機能にアクセスするための API です。ベース URL は
-    https://moecoop-api.arukascloud.io/ です。
+    http://api.fukuro.coop.moe/ です。
   license:
     name: MIT License
     url: 'https://github.com/coop-mojo/moecoop/blob/master/LICENSE'
   version: 1.0.0
-host: moecoop-api.arukascloud.io
+host: api.fukuro.coop.moe
 schemes:
-  - https
+  - http
 consumes:
   - application/json
 produces:
